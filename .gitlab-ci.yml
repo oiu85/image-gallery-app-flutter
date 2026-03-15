@@ -1,0 +1,9 @@
+stages:
+  - test
+
+flutter_test:
+  stage: test
+  image: ghcr.io/cirruslabs/flutter:stable
+  script:
+    - flutter pub get
+    - flutter test
