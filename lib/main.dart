@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return MaterialApp.router(
           debugShowCheckedModeBanner: false,
-          title: 'Image Gallery',
+          title: 'Pixel Challenge',
           theme: appTheme(context),
           darkTheme: appDarkTheme(context),
           themeMode: ThemeMode.light,
