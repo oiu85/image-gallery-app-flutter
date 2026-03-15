@@ -1,10 +1,7 @@
-//*  API Configuration
 class ApiConfig {
-  /// Base URL for all API requests
-  static const String baseUrl = 'https://xxx.com';
+  ApiConfig._();
 
+  static const String baseUrl = 'https://pixabay.com/api/';
 
-  /// TODO: Add more endpoints as needed
-  // static const String register = '$baseUrl/auth/register';
-  // static const String refreshToken = '$baseUrl/auth/refresh';
+  static const int defaultPerPage = 20;
 }

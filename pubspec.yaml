@@ -56,6 +56,9 @@ dependencies:
   injectable: ^2.4.1
   dartz: ^0.10.1
 
+  #Environment
+  flutter_dotenv: ^5.2.1
+
   #Storage
   shared_preferences: ^2.3.3
 
@@ -72,12 +75,14 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  build_runner: ^2.7.0
+  mocktail: ^1.0.4
+  build_runner: ^2.12.2
   freezed: ^3.0.0
   json_serializable: ^6.8.0
   flutter_gen_runner: ^5.11.0
   flutter_lints: ^6.0.0
   injectable_generator: ^2.4.1
+  mockito: ^5.6.3
 
 flutter:
 
@@ -87,11 +92,11 @@ flutter:
 
   # Assets
   assets:
+    - .env
     - assets/images/
     - assets/images/icons/
     - assets/images/png/
-    - assets/images/status/
-    - assets/images/icons/fimga_icons/
+
 
   fonts:
     - family: Cairo

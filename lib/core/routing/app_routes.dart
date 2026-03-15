@@ -7,6 +7,7 @@ abstract class AppRoutes {
   static const String verifyOtp = '/auth/verify-otp';
   static const String resetPassword = '/auth/reset-password';
   static const String home = '/home';
+  static const String imageDetail = '/home/image-detail';
   /// Full path for Add Level; nested under [codesMain] so push/pop works correctly.
   static const String addLevel = '/codes/levels/add';
 
