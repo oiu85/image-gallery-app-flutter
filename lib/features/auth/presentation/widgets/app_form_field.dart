@@ -14,6 +14,8 @@ class AppFormField extends StatelessWidget {
     this.obscureText = false,
     this.textCapitalization = TextCapitalization.sentences,
     this.prefixIcon,
+    this.autofillHints,
+    this.textInputAction,
   });
 
   final String label;
@@ -24,6 +26,8 @@ class AppFormField extends StatelessWidget {
   final bool obscureText;
   final TextCapitalization textCapitalization;
   final String? prefixIcon;
+  final Iterable<String>? autofillHints;
+  final TextInputAction? textInputAction;
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +50,8 @@ class AppFormField extends StatelessWidget {
           keyboardType: keyboardType,
           obscureText: obscureText,
           textCapitalization: textCapitalization,
+          autofillHints: autofillHints,
+          textInputAction: textInputAction ?? TextInputAction.next,
           style: textTheme.bodyMedium,
           decoration: InputDecoration(
             hintText: hint,

@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../core/util/app_cached_network_image.dart';
 import '../../../../gen/assets.gen.dart';
+import '../../../../shared/widgets/app_snackbar.dart';
 import '../../data/models/pixabay_image.dart';
 
 class ImageGridItem extends StatelessWidget {
@@ -71,27 +72,30 @@ class ImageGridItem extends StatelessWidget {
               Positioned(
                 top: 8.r,
                 right: 8.r,
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 3.h),
-                  decoration: BoxDecoration(
-                    color: Colors.black.withValues(alpha: 0.5),
-                    borderRadius: BorderRadius.circular(8.r),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      SvgPicture.asset(
-                        Assets.images.icons.heart.path,
-                        width: 12.r,
-                        height: 12.r,
-                        colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
-                      ),
-                      SizedBox(width: 3.w),
-                      Text(
-                        _formatCount(image.likes),
-                        style: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w600, color: Colors.white),
-                      ),
-                    ],
+                child: GestureDetector(
+                  onTap: () => AppSnackBar.showComingSoon(context, feature: 'Favorites'),
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 3.h),
+                    decoration: BoxDecoration(
+                      color: Colors.black.withValues(alpha: 0.5),
+                      borderRadius: BorderRadius.circular(8.r),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        SvgPicture.asset(
+                          Assets.images.icons.heart.path,
+                          width: 12.r,
+                          height: 12.r,
+                          colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
+                        ),
+                        SizedBox(width: 3.w),
+                        Text(
+                          _formatCount(image.likes),
+                          style: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w600, color: Colors.white),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),

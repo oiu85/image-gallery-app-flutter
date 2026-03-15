@@ -57,23 +57,31 @@ class LoginForm extends ConsumerWidget {
           ),
           SizedBox(height: 40.h),
 
-          AppFormField(
-            label: 'Email',
-            hint: 'Enter email',
-            error: state.emailError,
-            onChanged: viewModel.setEmail,
-            keyboardType: TextInputType.emailAddress,
-            prefixIcon: Assets.images.icons.message.path,
-          ),
-          SizedBox(height: 14.h),
-
-          AppFormField(
-            label: 'Password',
-            hint: 'Enter password',
-            error: state.passwordError,
-            onChanged: viewModel.setPassword,
-            obscureText: true,
-            prefixIcon: Assets.images.icons.lock.path,
+          AutofillGroup(
+            child: Column(
+              children: [
+                AppFormField(
+                  label: 'Email',
+                  hint: 'Enter email',
+                  error: state.emailError,
+                  onChanged: viewModel.setEmail,
+                  keyboardType: TextInputType.emailAddress,
+                  autofillHints: const [AutofillHints.email],
+                  prefixIcon: Assets.images.icons.message.path,
+                ),
+                SizedBox(height: 14.h),
+                AppFormField(
+                  label: 'Password',
+                  hint: 'Enter password',
+                  error: state.passwordError,
+                  onChanged: viewModel.setPassword,
+                  obscureText: true,
+                  autofillHints: const [AutofillHints.password],
+                  textInputAction: TextInputAction.done,
+                  prefixIcon: Assets.images.icons.lock.path,
+                ),
+              ],
+            ),
           ),
           SizedBox(height: 36.h),
 

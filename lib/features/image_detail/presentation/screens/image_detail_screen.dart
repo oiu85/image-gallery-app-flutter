@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../core/util/app_cached_network_image.dart';
 import '../../../../gen/assets.gen.dart';
+import '../../../../shared/widgets/app_snackbar.dart';
 import '../../../gallery/data/models/pixabay_image.dart';
 import '../widgets/image_section.dart';
 import '../widgets/stats_section.dart';
@@ -151,7 +152,7 @@ class ImageDetailScreen extends StatelessWidget {
                 height: 20.r,
                 colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
               ),
-              onPressed: () {},
+              onPressed: () => AppSnackBar.showComingSoon(context, feature: 'Favorites'),
             ),
           ),
         ),
