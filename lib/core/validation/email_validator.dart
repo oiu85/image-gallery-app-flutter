@@ -1,9 +1,7 @@
 import 'package:reactive_forms/reactive_forms.dart';
-import 'package:easy_localization/easy_localization.dart';
-import '../localization/locale_keys.g.dart';
 
 /// Validator for email field
-/// 
+///
 /// Validates that:
 /// - Email is not empty
 /// - Email matches standard email format
@@ -13,15 +11,13 @@ class EmailValidator {
   /// Validate for standard Form (returns String? for error message)
   String? call(String? value) {
     if (value == null || value.trim().isEmpty) {
-      return LocaleKeys.validation_emailRequired.tr();
+      return 'Email is required';
     }
 
-    final emailRegex = RegExp(
-      r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
-    );
+    final emailRegex = RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
 
     if (!emailRegex.hasMatch(value.trim())) {
-      return LocaleKeys.validation_emailInvalid.tr();
+      return 'Invalid email format';
     }
 
     return null;
@@ -42,9 +38,7 @@ class EmailValidator {
   /// Validate email directly (static helper)
   static bool isValidEmail(String email) {
     if (email.isEmpty) return false;
-    final emailRegex = RegExp(
-      r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
-    );
+    final emailRegex = RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
     return emailRegex.hasMatch(email.trim());
   }
 }
@@ -52,5 +46,6 @@ class EmailValidator {
 /// Result wrapper for legacy compatibility
 class EmailValidationResult {
   final String? message;
+
   const EmailValidationResult(this.message);
 }

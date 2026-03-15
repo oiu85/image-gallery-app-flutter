@@ -1,15 +1,14 @@
 import 'package:reactive_forms/reactive_forms.dart';
-import 'package:easy_localization/easy_localization.dart';
-import '../localization/locale_keys.g.dart';
 
 /// Validator for password field
-/// 
+///
 /// Validates that:
 /// - Password is not empty
-/// - Password is at least 8 characters long
-/// - Password contains at least one letter and one number (optional, can be customized)
+/// - Password length is within [minLength] and [maxLength]
+/// - Optional: uppercase, lowercase, number, special char
 class PasswordValidator {
   final int minLength;
+  final int? maxLength;
   final bool requireUpperCase;
   final bool requireLowerCase;
   final bool requireNumber;
@@ -17,6 +16,7 @@ class PasswordValidator {
 
   const PasswordValidator({
     this.minLength = 8,
+    this.maxLength,
     this.requireUpperCase = false,
     this.requireLowerCase = false,
     this.requireNumber = false,
@@ -26,29 +26,33 @@ class PasswordValidator {
   /// Validate for standard Form (returns String? for error message)
   String? call(String? value) {
     if (value == null || value.trim().isEmpty) {
-      return LocaleKeys.validation_passwordRequired.tr();
+      return 'Password is required';
     }
 
     final password = value;
 
     if (password.length < minLength) {
-      return LocaleKeys.validation_passwordMinLength.tr(namedArgs: {'minLength': minLength.toString()});
+      return 'Minimum $minLength characters';
+    }
+
+    if (maxLength != null && password.length > maxLength!) {
+      return 'Maximum $maxLength characters';
     }
 
     if (requireUpperCase && !password.contains(RegExp(r'[A-Z]'))) {
-      return LocaleKeys.validation_passwordRequireUpperCase.tr();
+      return 'Requires at least one uppercase letter';
     }
 
     if (requireLowerCase && !password.contains(RegExp(r'[a-z]'))) {
-      return LocaleKeys.validation_passwordRequireLowerCase.tr();
+      return 'Requires at least one lowercase letter';
     }
 
     if (requireNumber && !password.contains(RegExp(r'[0-9]'))) {
-      return LocaleKeys.validation_passwordRequireNumber.tr();
+      return 'Requires at least one number';
     }
 
     if (requireSpecialChar && !password.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
-      return LocaleKeys.validation_passwordRequireSpecialChar.tr();
+      return 'Requires at least one special character';
     }
 
     return null;
@@ -88,12 +92,8 @@ class PasswordValidator {
 /// Result wrapper for legacy compatibility
 class PasswordValidationResult {
   final String? message;
+
   const PasswordValidationResult(this.message);
 }
 
-enum PasswordStrength {
-  empty,
-  weak,
-  medium,
-  strong,
-}
+enum PasswordStrength { empty, weak, medium, strong }

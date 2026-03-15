@@ -82,6 +82,7 @@ abstract class  LocaleKeys {
   static const validation_emailInvalid = 'validation.emailInvalid';
   static const validation_passwordRequired = 'validation.passwordRequired';
   static const validation_passwordMinLength = 'validation.passwordMinLength';
+  static const validation_passwordMaxLength = 'validation.passwordMaxLength';
   static const validation_passwordRequireUpperCase = 'validation.passwordRequireUpperCase';
   static const validation_passwordRequireLowerCase = 'validation.passwordRequireLowerCase';
   static const validation_passwordRequireNumber = 'validation.passwordRequireNumber';
@@ -91,6 +92,12 @@ abstract class  LocaleKeys {
   static const validation_confirmPasswordMismatch = 'validation.confirmPasswordMismatch';
   static const validation_phoneInvalid = 'validation.phoneInvalid';
   static const validation_nameMinLength = 'validation.nameMinLength';
+  static const validation_usernameRequired = 'validation.usernameRequired';
+  static const validation_usernameMinLength = 'validation.usernameMinLength';
+  static const validation_usernameMaxLength = 'validation.usernameMaxLength';
+  static const validation_ageRequired = 'validation.ageRequired';
+  static const validation_ageInvalid = 'validation.ageInvalid';
+  static const validation_ageRange = 'validation.ageRange';
   static const validation_cardNumberRequired = 'validation.cardNumberRequired';
   static const validation_cardNumberInvalid = 'validation.cardNumberInvalid';
   static const validation_cardNumberLength = 'validation.cardNumberLength';

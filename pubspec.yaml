@@ -33,6 +33,7 @@ dependencies:
 
   #State Management
   equatable: 2.0.7
+  flutter_riverpod: ^2.6.1
   reactive_forms: ^18.1.1
   freezed_annotation: ^3.1.0
   json_annotation: ^4.9.0
@@ -51,6 +52,7 @@ dependencies:
   http: ^1.2.2
   dio: ^5.4.0
   pretty_dio_logger: ^1.4.0
+  get_it: ^8.0.2
   injectable: ^2.4.1
   dartz: ^0.10.1
 
@@ -86,6 +88,10 @@ flutter:
   # Assets
   assets:
     - assets/images/
+    - assets/images/icons/
+    - assets/images/png/
+    - assets/images/status/
+    - assets/images/icons/fimga_icons/
 
   fonts:
     - family: Cairo

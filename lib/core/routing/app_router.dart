@@ -1,15 +1,29 @@
 import 'package:flutter/foundation.dart';
 import 'package:go_router/go_router.dart';
 import 'app_routes.dart';
+import '../../presentation/home/home_page.dart';
+import '../../presentation/login/pages/login_page.dart';
+import '../../presentation/register/pages/register_page.dart';
 
 class AppRouter {
-  /// Creates and returns the router; initial route is [AppRoutes.login].
+  /// Creates and returns the router; initial route is [AppRoutes.register].
   static Future<GoRouter> createRouter() async {
     return GoRouter(
-      initialLocation: AppRoutes.login,
+      initialLocation: AppRoutes.register,
       debugLogDiagnostics: kDebugMode,
       routes: [
-
+        GoRoute(
+          path: AppRoutes.register,
+          builder: (context, state) => const RegisterPage(),
+        ),
+        GoRoute(
+          path: AppRoutes.login,
+          builder: (context, state) => const LoginPage(),
+        ),
+        GoRoute(
+          path: AppRoutes.home,
+          builder: (context, state) => const HomePage(),
+        ),
       ],
     );
   }

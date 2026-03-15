@@ -1,8 +1,8 @@
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../data/repositories/auth_repository.dart';
 import '../network/network_client.dart';
 import '../storage/app_storage_service.dart';
-
 
 final getIt = GetIt.instance;
 
@@ -12,18 +12,18 @@ final getIt = GetIt.instance;
 Future<GetIt> configureDependencies() async {
   // Initialize SharedPreferences first
   final prefs = await SharedPreferences.getInstance();
-  // Register SharedPreferences manually
   getIt.registerSingleton<SharedPreferences>(prefs);
-  // Register storage service
   getIt.registerLazySingleton<AppStorageService>(
     () => SharedPreferencesStorageService(getIt<SharedPreferences>()),
   );
 
-  // Register NetworkClient (requires AppStorageService)
   getIt.registerSingleton<NetworkClient>(
     NetworkClient(getIt<AppStorageService>()),
   );
 
+  getIt.registerLazySingleton<AuthRepository>(
+    () => AuthRepository(getIt<AppStorageService>()),
+  );
 
   return getIt;
 }
